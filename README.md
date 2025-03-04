@@ -83,11 +83,11 @@ A1→ [PE10]→[PE11]
 
 - Icarus Verilog:
 
-```
+  ```
   sh
   brew install icarus-verilog # macOS
   sudo apt-get install iverilog # Ubuntu
-```
+  ```
 
 - Python 3
 - Cocotb:
@@ -117,10 +117,10 @@ A1→ [PE10]→[PE11]
 
 2.  **Systolic Array Test:**
 
-```
+    ```
     sh
     make test_sys_array
-```
+    ```
 
 These commands will:
 
