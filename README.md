@@ -1,18 +1,65 @@
-# 2×2 Systolic Array Implementation
+<div align="center">
+  <!-- REMOVE THIS IF YOU DON'T HAVE A LOGO -->
+    <img src="https://github.com/user-attachments/assets/0ae1b6d5-1a62-4b41-b2c7-c595a0460497" alt="Logo" width="80" height="80">
 
-## Project Overview
+<h3 align="center">Systolic Array Implementation</h3>
 
-This repository contains a Verilog implementation of a minimal 2×2 systolic array for matrix multiplication. The systolic array architecture provides an efficient hardware solution for performing parallel computations with high throughput and reduced memory access.
+  <p align="center">
+    Verilog implementation of a 2x2 systolic array for matrix multiplication.
+    <br />
+     <a href="https://github.com/surjahead/systolic-array">github.com/surjahead/systolic-array</a>
+  </p>
+</div>
+
+<!-- REMOVE THIS IF YOU DON'T HAVE A DEMO -->
+<!-- TIP: You can alternatively directly upload a video up to 100MB by dropping it in while editing the README on GitHub. This displays a video player directly on GitHub instead of making it so that you have to click an image/link -->
+<div align="center">
+  <a href="https://github.com/user-attachments/assets/f45c9ee9-ad2f-40f4-bb60-e9bbd1472c45">
+    <img src="https://github.com/user-attachments/assets/f45c9ee9-ad2f-40f4-bb60-e9bbd1472c45" alt="Project Demo">
+    <p>Watch Demo Video</p>
+  </a>
+</div>
+
+## Table of Contents
+
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#key-features">Key Features</a></li>
+      </ul>
+    </li>
+    <li><a href="#architecture">Architecture</a></li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#running-tests">Running Tests</a></li>
+      </ul>
+    </li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
+
+## About The Project
+
+This repository contains a Verilog implementation of a minimal 2×2 systolic array designed for efficient matrix multiplication. The systolic array architecture enables parallel computations with high throughput and reduced memory access, making it suitable for hardware acceleration of matrix operations. The design uses a weight-stationary approach.
+
+### Key Features
+
+- **2x2 Systolic Array:** Implements a basic systolic array with 4 processing elements (PEs).
+- **Weight-Stationary Architecture:** Weights are loaded and held within each PE, minimizing data movement during computation.
+- **Multiply-Accumulate Operations:** Each PE performs multiply-accumulate operations.
+- **Data Skewing:** Input data is provided in a skewed format to ensure proper data flow through the array.
+- **Testbenches:** Includes Python-based testbenches using Cocotb for verifying the functionality of the PE and the entire systolic array.
+- **VCD Dumps:** Generates Value Change Dump (VCD) files for waveform visualization and debugging.
 
 ## Architecture
 
-The 2×2 systolic array consists of:
-
-- 4 Processing Elements (PEs) arranged in a 2×2 grid
-- Each PE performs multiply-accumulate operations
-- Horizontal data flow for input matrix A elements
-- Vertical data flow for input matrix B elements
-- Stationary result accumulation within each PE
+The 2x2 systolic array is structured as follows:
 
 ```
      B0      B1
@@ -24,53 +71,66 @@ A1→ [PE10]→[PE11]
     C00     C11
 ```
 
-## Files
+- **Processing Elements (PEs):** Arranged in a 2x2 grid, each PE performs a multiply-accumulate operation. The `src/weight_stationary_pe.sv` file defines the PE module.
+- **Data Flow:** Input matrix A elements flow horizontally, and input matrix B elements flow vertically.
+- **Result Accumulation:** Partial results are accumulated within each PE.
 
-- `systolic_array_2x2.v` - Top module implementing the complete 2×2 systolic array
-- `processing_element.v` - Single PE module implementing the multiply-accumulate operation
-- `control_unit.v` - Control logic for managing data flow and timing
-- `testbench.v` - Testbench for verification
+![Architecture Diagram](https://github.com/user-attachments/assets/721b7fb3-e480-4809-9023-fd48b82b1f8c)
 
-## Usage
+## Getting Started
 
-To use this systolic array:
+### Prerequisites
 
-1. Provide input matrices A and B in the appropriate skewed format
-2. Control signals:
-   - `clk`: System clock
-   - `reset`: Active high reset signal
-   - `start`: Signal to begin computation
-   - `done`: Output signal indicating computation completion
+- Icarus Verilog:
+  sh
+  brew install icarus-verilog # macOS
+  sudo apt-get install iverilog # Ubuntu
+  ```
 
-## Input Format
+  ```
+- Python 3
+- Cocotb:
+  sh
+  pip install cocotb
+  ```
 
-Inputs are provided in a skewed fashion to maintain proper data flow:
+  ```
+- Cocotb-VPI: Follow instructions on cocotb documentation for setting up VPI with Icarus Verilog
 
-```
-Clock Cycle | A0 Input | A1 Input | B0 Input | B1 Input
-------------|----------|----------|----------|----------
-1           | A[0][0]  | -        | B[0][0]  | -
-2           | A[0][1]  | A[1][0]  | B[1][0]  | B[0][1]
-3           | -        | A[1][1]  | -        | B[1][1]
-```
+### Installation
 
-## Output Format
+1. Clone the repository:
+   sh
+   git clone https://github.com/surjahead/systolic-array.git
+   cd systolic-array
+   ```
 
-After computation completes, the result matrix C can be read from the PEs:
+   ```
 
-- C[0][0] from PE00
-- C[0][1] from PE01
-- C[1][0] from PE10
-- C[1][1] from PE11
+### Running Tests
 
-## Performance
+1.  **PE Test:**
+    sh
+    make test_pe
 
-- Latency: 5 clock cycles (for 2×2 matrices)
-- Throughput: One matrix multiplication every 3 cycles (with proper pipelining)
+    ```
 
-## Future Improvements
+    ```
 
-- Scalable design to support larger matrix dimensions
-- Enhanced control logic for handling various matrix sizes
-- Memory interfaces for direct loading of matrix data
-- Optimization for FPGA implementation
+2.  **Systolic Array Test:**
+    sh
+    make test_sys_array
+    ```
+
+    ```
+
+These commands will:
+
+- Compile the Verilog code using Icarus Verilog.
+- Run the Python testbenches using Cocotb.
+- Check for any failures reported in the `results.xml` file.
+- Generate VCD files (`pe.vcd`, `sys_array.vcd`) for waveform analysis.
+
+## Acknowledgments
+
+- The Cocotb framework was instrumental in creating the test environment.
