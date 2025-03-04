@@ -13,18 +13,18 @@ module systolic_array #(parameter DATA_WIDTH=8)
     input wire [DATA_WIDTH-1:0] x0,
     input wire [DATA_WIDTH-1:0] x1,
 
-    output reg [DATA_WIDTH-1:0] y0,
-    output reg [DATA_WIDTH-1:0] y1,
+    output wire [DATA_WIDTH-1:0] y0,
+    output wire [DATA_WIDTH-1:0] y1,
 
     output reg done
 );
 
    
-    reg [DATA_WIDTH-1:0] input_inter0;
-    reg [DATA_WIDTH-1:0] input_inter1;
+    wire [DATA_WIDTH-1:0] input_inter0;
+    wire [DATA_WIDTH-1:0] input_inter1;
 
-    reg [DATA_WIDTH-1:0] psum_inter0;
-    reg [DATA_WIDTH-1:0] psum_inter1;
+    wire [DATA_WIDTH-1:0] psum_inter0;
+    wire [DATA_WIDTH-1:0] psum_inter1;
 
      wire [DATA_WIDTH-1:0] zero_wire;
     assign zero_wire = 8'b0;
@@ -49,7 +49,7 @@ module systolic_array #(parameter DATA_WIDTH=8)
         .input_in(input_inter0),
         .weight(w01),
         .psum_in(zero_wire),
-        .input_out(zero_wire),
+        .input_out(),
         .psum_out(psum_inter1)
     );
 
@@ -73,7 +73,7 @@ module systolic_array #(parameter DATA_WIDTH=8)
         .input_in(input_inter1),
         .weight(w11),
         .psum_in(psum_inter1),
-        .input_out(zero_wire),
+        .input_out(),
         .psum_out(y1)
     );
 

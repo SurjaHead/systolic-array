@@ -1,6 +1,6 @@
 <testsuites name="results">
   <testsuite name="all" package="all">
-    <property name="random_seed" value="1741102891" />
-    <testcase name="test_systolic_array" classname="tests.test_sys_array" file="/Users/suryasure/projects/verilog-nn/tests/test_sys_array.py" lineno="8" time="0.00102996826171875" sim_time_ns="121.0" ratio_time="117479.34814814814" />
+    <property name="random_seed" value="1741105797" />
+    <testcase name="test_systolic_array" classname="tests.test_sys_array" file="/Users/suryasure/projects/verilog-nn/tests/test_sys_array.py" lineno="8" time="0.0008959770202636719" sim_time_ns="91.0" ratio_time="101565.1048430016" />
   </testsuite>
 </testsuites>

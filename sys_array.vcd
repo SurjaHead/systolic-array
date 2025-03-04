@@ -1,5 +1,5 @@
 $date
-	Tue Mar  4 10:41:31 2025
+	Tue Mar  4 11:29:57 2025
 $end
 $version
 	Icarus Verilog
@@ -10,15 +10,15 @@ $end
 $scope module systolic_array $end
 $var wire 1 ! clk $end
 $var wire 1 " load_weights $end
-$var wire 8 # psum_nul0 [7:0] $end
-$var wire 1 $ reset $end
-$var wire 1 % start $end
-$var wire 8 & w00 [7:0] $end
-$var wire 8 ' w01 [7:0] $end
-$var wire 8 ( w10 [7:0] $end
-$var wire 8 ) w11 [7:0] $end
-$var wire 8 * x0 [7:0] $end
-$var wire 8 + x1 [7:0] $end
+$var wire 1 # reset $end
+$var wire 1 $ start $end
+$var wire 8 % w00 [7:0] $end
+$var wire 8 & w01 [7:0] $end
+$var wire 8 ' w10 [7:0] $end
+$var wire 8 ( w11 [7:0] $end
+$var wire 8 ) x0 [7:0] $end
+$var wire 8 * x1 [7:0] $end
+$var wire 8 + zero_wire [7:0] $end
 $var wire 8 , y1 [7:0] $end
 $var wire 8 - y0 [7:0] $end
 $var wire 8 . psum_inter1 [7:0] $end
@@ -32,8 +32,8 @@ $var wire 1 ! clk $end
 $var wire 8 4 input_in [7:0] $end
 $var wire 1 " load_weight $end
 $var wire 8 5 psum_in [7:0] $end
-$var wire 1 $ reset $end
-$var wire 1 % valid $end
+$var wire 1 # reset $end
+$var wire 1 $ valid $end
 $var wire 8 6 weight [7:0] $end
 $var parameter 32 7 DATA_WIDTH $end
 $var reg 8 8 input_out [7:0] $end
@@ -45,8 +45,8 @@ $var wire 1 ! clk $end
 $var wire 8 ; input_in [7:0] $end
 $var wire 1 " load_weight $end
 $var wire 8 < psum_in [7:0] $end
-$var wire 1 $ reset $end
-$var wire 1 % valid $end
+$var wire 1 # reset $end
+$var wire 1 $ valid $end
 $var wire 8 = weight [7:0] $end
 $var parameter 32 > DATA_WIDTH $end
 $var reg 8 ? input_out [7:0] $end
@@ -58,8 +58,8 @@ $var wire 1 ! clk $end
 $var wire 8 B input_in [7:0] $end
 $var wire 1 " load_weight $end
 $var wire 8 C psum_in [7:0] $end
-$var wire 1 $ reset $end
-$var wire 1 % valid $end
+$var wire 1 # reset $end
+$var wire 1 $ valid $end
 $var wire 8 D weight [7:0] $end
 $var parameter 32 E DATA_WIDTH $end
 $var reg 8 F input_out [7:0] $end
@@ -71,8 +71,8 @@ $var wire 1 ! clk $end
 $var wire 8 I input_in [7:0] $end
 $var wire 1 " load_weight $end
 $var wire 8 J psum_in [7:0] $end
-$var wire 1 $ reset $end
-$var wire 1 % valid $end
+$var wire 1 # reset $end
+$var wire 1 $ valid $end
 $var wire 8 K weight [7:0] $end
 $var parameter 32 L DATA_WIDTH $end
 $var reg 8 M input_out [7:0] $end
@@ -115,7 +115,7 @@ b0 8
 b0 6
 b0 5
 b0 4
-x3
+03
 b0 1
 b0 0
 b0 /
@@ -128,9 +128,9 @@ b0 )
 b0 (
 b0 '
 b0 &
-0%
-1$
-b0 #
+b0 %
+0$
+1#
 0"
 1!
 $end
@@ -138,7 +138,7 @@ $end
 0!
 #10
 1!
-0$
+0#
 #15
 0!
 #20
@@ -147,20 +147,20 @@ b10 A
 b11 H
 b100 O
 1!
-b100 )
+b100 (
 b100 K
-b11 (
+b11 '
 b11 D
-b10 '
+b10 &
 b10 =
-b1 &
+b1 %
 b1 6
 1"
 #25
 0!
 #30
 1!
-1%
+1$
 #35
 0!
 #40
@@ -171,7 +171,7 @@ b101 /
 b101 9
 b101 C
 1!
-b101 *
+b101 )
 b101 4
 #45
 0!
@@ -181,9 +181,6 @@ b111 F
 b111 I
 b11010 -
 b11010 G
-b0x0x #
-b0x0x 5
-b0x0x <
 b101 ?
 b1010 .
 b1010 @
@@ -195,9 +192,9 @@ b110 /
 b110 9
 b110 C
 1!
-b111 +
+b111 *
 b111 B
-b110 *
+b110 )
 b110 4
 #55
 0!
@@ -205,77 +202,52 @@ b110 4
 b0 1
 b0 8
 b0 ;
-bx /
-bx 9
-bx C
+b0 /
+b0 9
+b0 C
 b110 ?
-bx .
-bx @
-bx J
+b1100 .
+b1100 @
+b1100 J
 b1000 0
 b1000 F
 b1000 I
 b11110 -
 b11110 G
-b0xxx #
-b0xxx 5
-b0xxx <
 b111 M
 b100110 ,
 b100110 N
 1!
-b1000 +
+b1000 *
 b1000 B
-b0 *
+b0 )
 b0 4
 #65
 0!
 #70
-b0x000 #
-b0x000 5
-b0x000 <
 b1000 M
-bx ,
-bx N
+b101100 ,
+b101100 N
 b0 0
 b0 F
 b0 I
-bx -
-bx G
+b0 -
+b0 G
 b0 ?
+b0 .
+b0 @
+b0 J
 1!
-b0 +
+b0 *
 b0 B
 #75
 0!
 #80
-b0 #
-b0 5
-b0 <
 b0 M
-1!
-#85
-0!
-#90
-b0 .
-b0 @
-b0 J
-b0 /
-b0 9
-b0 C
-1!
-#95
-0!
-#100
-b0 -
-b0 G
 b0 ,
 b0 N
 1!
-#105
+13
+#85
 0!
-#110
-1!
-#115
-0!
-#121
+#91
