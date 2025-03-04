@@ -82,47 +82,45 @@ A1→ [PE10]→[PE11]
 ### Prerequisites
 
 - Icarus Verilog:
+
+```
   sh
   brew install icarus-verilog # macOS
   sudo apt-get install iverilog # Ubuntu
-  ```
+```
 
-  ```
 - Python 3
 - Cocotb:
+  ```
   sh
   pip install cocotb
-  ```
-
   ```
 - Cocotb-VPI: Follow instructions on cocotb documentation for setting up VPI with Icarus Verilog
 
 ### Installation
 
 1. Clone the repository:
+   ```
    sh
    git clone https://github.com/surjahead/systolic-array.git
    cd systolic-array
    ```
 
-   ```
-
 ### Running Tests
 
 1.  **PE Test:**
-    sh
-    make test_pe
 
     ```
-
+    sh
+    make test_pe
     ```
 
 2.  **Systolic Array Test:**
+
+```
     sh
     make test_sys_array
-    ```
-
-    ```
+```
 
 These commands will:
 
