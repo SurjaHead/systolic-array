@@ -3,7 +3,7 @@
 `timescale 1ns/1ns
 
 module weight_stationary_pe #(
-  parameter DATA_WIDTH=16 // Bit width of weights and activations
+  parameter DATA_WIDTH=8 // Bit width of weights and activations
 )
 (
   input wire clk,

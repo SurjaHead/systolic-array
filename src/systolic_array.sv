@@ -1,21 +1,80 @@
-module systolic_array #(parameter DATA_WIDTH=16) 
+module systolic_array #(parameter DATA_WIDTH=8) 
 (
     input wire clk,
     input wire reset,
     input wire load_weights,
     input wire start,
 
+    input wire [DATA_WIDTH-1:0] w00,
+    input wire [DATA_WIDTH-1:0] w01,
+    input wire [DATA_WIDTH-1:0] w10,
     input wire [DATA_WIDTH-1:0] w11,
-    input wire [DATA_WIDTH-1:0] w12,
-    input wire [DATA_WIDTH-1:0] w21,
-    input wire [DATA_WIDTH-1:0] w22,
 
-    input wire [DATA_WIDTH-1:0] x11,
-    input wire [DATA_WIDTH-1:0] x12,
-    input wire [DATA_WIDTH-1:0] x21,
-    input wire [DATA_WIDTH-1:0] x22,
+    input wire [DATA_WIDTH-1:0] x0,
+    input wire [DATA_WIDTH-1:0] x1,
 
-    
-)
+    output reg [DATA_WIDTH-1:0] y0,
+    output reg [DATA_WIDTH-1:0] y1,
+
+    output reg done
+);
+
+   
+    reg [DATA_WIDTH-1:0] input_inter0;
+    reg [DATA_WIDTH-1:0] input_inter1;
+
+    reg [DATA_WIDTH-1:0] psum_inter0;
+    reg [DATA_WIDTH-1:0] psum_inter1;
+
+     wire [DATA_WIDTH-1:0] zero_wire;
+    assign zero_wire = 8'b0;
+
+    weight_stationary_pe PE00 (
+        .clk(clk),
+        .reset(reset),
+        .load_weight(load_weights),
+        .valid(start),
+        .input_in(x0),
+        .weight(w00),
+        .psum_in(zero_wire),
+        .input_out(input_inter0),
+        .psum_out(psum_inter0)
+    );
+
+    weight_stationary_pe PE01 (
+        .clk(clk),
+        .reset(reset),
+        .load_weight(load_weights),
+        .valid(start),
+        .input_in(input_inter0),
+        .weight(w01),
+        .psum_in(zero_wire),
+        .input_out(zero_wire),
+        .psum_out(psum_inter1)
+    );
+
+    weight_stationary_pe PE10 (
+        .clk(clk),
+        .reset(reset),
+        .load_weight(load_weights),
+        .valid(start),
+        .input_in(x1),
+        .weight(w10),
+        .psum_in(psum_inter0),
+        .input_out(input_inter1),
+        .psum_out(y0)
+    );
+
+    weight_stationary_pe PE11 (
+        .clk(clk),
+        .reset(reset),
+        .load_weight(load_weights),
+        .valid(start),
+        .input_in(input_inter1),
+        .weight(w11),
+        .psum_in(psum_inter1),
+        .input_out(zero_wire),
+        .psum_out(y1)
+    );
 
 endmodule
