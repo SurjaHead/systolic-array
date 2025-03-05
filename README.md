@@ -1,7 +1,3 @@
-<div align="center">
-  <!-- REMOVE THIS IF YOU DON'T HAVE A LOGO -->
-    <img src="https://github.com/user-attachments/assets/0ae1b6d5-1a62-4b41-b2c7-c595a0460497" alt="Logo" width="80" height="80">
-
 <h3 align="center">Systolic Array Implementation</h3>
 
   <p align="center">
@@ -14,8 +10,8 @@
 <!-- REMOVE THIS IF YOU DON'T HAVE A DEMO -->
 <!-- TIP: You can alternatively directly upload a video up to 100MB by dropping it in while editing the README on GitHub. This displays a video player directly on GitHub instead of making it so that you have to click an image/link -->
 <div align="center">
-  <a href="/Users/suryasure/projects/systolic-array/systolic_array.png">
-    <img src="/Users/suryasure/projects/systolic-array/systolic_array.png" alt="Project Demo">
+  <a href="img/systolic_array.png">
+    <img src="img/systolic_array.png" alt="synthesized logic gate diagram of the systolic array">
     <p>Watch Demo Video</p>
   </a>
 </div>
