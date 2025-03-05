@@ -55,17 +55,15 @@ This repository contains a Verilog implementation of a minimal 2×2 systolic arr
 The 2x2 systolic array is structured as follows:
 
 ```
-     B0      B1
+X0→ [PE00]→[PE01]
      ↓       ↓
-A0→ [PE00]→[PE01]
+X1→ [PE10]→[PE11]
      ↓       ↓
-A1→ [PE10]→[PE11]
-     ↓       ↓
-    C00     C11
+    Y0     Y1
 ```
 
 - **Processing Elements (PEs):** Arranged in a 2x2 grid, each PE performs a multiply-accumulate operation. The `src/weight_stationary_pe.sv` file defines the PE module.
-- **Data Flow:** Input matrix A elements flow horizontally, and input matrix B elements flow vertically.
+- **Data Flow:** Input matrix A elements flow horizontally, and the partial sum in each PE flows down vertically
 - **Result Accumulation:** Partial results are accumulated within each PE.
 
 ![Architecture Diagram](https://github.com/user-attachments/assets/721b7fb3-e480-4809-9023-fd48b82b1f8c)
@@ -77,7 +75,6 @@ A1→ [PE10]→[PE11]
 - Icarus Verilog:
 
   ```
-  sh
   brew install icarus-verilog # macOS
   sudo apt-get install iverilog # Ubuntu
   ```
@@ -85,7 +82,6 @@ A1→ [PE10]→[PE11]
 - Python 3
 - Cocotb:
   ```
-  sh
   pip install cocotb
   ```
 - Cocotb-VPI: Follow instructions on cocotb documentation for setting up VPI with Icarus Verilog
@@ -94,7 +90,6 @@ A1→ [PE10]→[PE11]
 
 1. Clone the repository:
    ```
-   sh
    git clone https://github.com/surjahead/systolic-array.git
    cd systolic-array
    ```
@@ -104,14 +99,12 @@ A1→ [PE10]→[PE11]
 1.  **PE Test:**
 
     ```
-    sh
     make test_pe
     ```
 
 2.  **Systolic Array Test:**
 
     ```
-    sh
     make test_sys_array
     ```
 
