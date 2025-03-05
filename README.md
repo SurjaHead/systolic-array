@@ -1,4 +1,4 @@
-<h3 align="center">Systolic Array Implementation</h3>
+<h1 align="center">Systolic Array Implementation</h1>
 
   <p align="center">
     Verilog implementation of a 2x2 systolic array for matrix multiplication.
