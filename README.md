@@ -1,12 +1,10 @@
 <h1 align="center">Systolic Array Implementation</h1>
 
   <p align="center">
-    Verilog implementation of a 2x2 systolic array for matrix multiplication.
+    Verilog implementation of a 2x2 systolic array to accelerate matrix multiplication.
   </p>
 </div>
 
-<!-- REMOVE THIS IF YOU DON'T HAVE A DEMO -->
-<!-- TIP: You can alternatively directly upload a video up to 100MB by dropping it in while editing the README on GitHub. This displays a video player directly on GitHub instead of making it so that you have to click an image/link -->
 <div align="center">
   <a href="img/systolic_array.png">
     <img src="img/systolic_array.png" alt="synthesized logic gate diagram of the systolic array">
@@ -66,7 +64,7 @@ X1→ [PE10]→[PE11]
 - **Data Flow:** Input matrix A elements flow horizontally, and the partial sum in each PE flows down vertically
 - **Result Accumulation:** Partial results are accumulated within each PE.
 
-![Architecture Diagram](https://github.com/user-attachments/assets/721b7fb3-e480-4809-9023-fd48b82b1f8c)
+<!-- ![Architecture Diagram](https://github.com/user-attachments/assets/721b7fb3-e480-4809-9023-fd48b82b1f8c) -->
 
 ## Getting Started
 
