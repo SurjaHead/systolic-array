@@ -2,8 +2,6 @@
 
   <p align="center">
     Verilog implementation of a 2x2 systolic array for matrix multiplication.
-    <br />
-     <a href="https://github.com/surjahead/systolic-array">github.com/surjahead/systolic-array</a>
   </p>
 </div>
 
@@ -12,7 +10,6 @@
 <div align="center">
   <a href="img/systolic_array.png">
     <img src="img/systolic_array.png" alt="synthesized logic gate diagram of the systolic array">
-    <p>Watch Demo Video</p>
   </a>
 </div>
 
