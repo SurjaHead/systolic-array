@@ -61,6 +61,8 @@ X1→ [PE10]→[PE11]
 - **Data Flow:** Input matrix A elements flow horizontally, and the partial sum in each PE flows down vertically
 - **Result Accumulation:** Partial results are accumulated within each PE.
 
+I explained the architecture in more depth in my article, which you can find [here](https://substack.com/inbox/post/158463522).
+
 <!-- ![Architecture Diagram](https://github.com/user-attachments/assets/721b7fb3-e480-4809-9023-fd48b82b1f8c) -->
 
 ## Getting Started
