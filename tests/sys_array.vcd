@@ -1,0 +1,271 @@
+$date
+	Fri Mar  7 23:51:47 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module systolic_array $end
+$var wire 1 ! clk $end
+$var wire 1 " load_weights $end
+$var wire 1 # reset $end
+$var wire 1 $ start $end
+$var wire 8 % w00 [7:0] $end
+$var wire 8 & w01 [7:0] $end
+$var wire 8 ' w10 [7:0] $end
+$var wire 8 ( w11 [7:0] $end
+$var wire 8 ) x0 [7:0] $end
+$var wire 8 * x1 [7:0] $end
+$var wire 8 + y0 [7:0] $end
+$var wire 8 , y1 [7:0] $end
+$var wire 8 - zero_wire [7:0] $end
+$var wire 8 . y1_internal [7:0] $end
+$var wire 8 / y0_internal [7:0] $end
+$var wire 8 0 psum_inter1 [7:0] $end
+$var wire 8 1 psum_inter0 [7:0] $end
+$var wire 8 2 input_inter1 [7:0] $end
+$var wire 8 3 input_inter0 [7:0] $end
+$var parameter 32 4 DATA_WIDTH $end
+$var reg 1 5 done $end
+$var reg 8 6 y0_reg [7:0] $end
+$var reg 8 7 y1_reg [7:0] $end
+$scope module PE00 $end
+$var wire 1 ! clk $end
+$var wire 8 8 input_in [7:0] $end
+$var wire 1 " load_weight $end
+$var wire 8 9 psum_in [7:0] $end
+$var wire 1 # reset $end
+$var wire 1 $ valid $end
+$var wire 8 : weight [7:0] $end
+$var parameter 32 ; DATA_WIDTH $end
+$var reg 8 < input_out [7:0] $end
+$var reg 8 = psum_out [7:0] $end
+$var reg 8 > weight_reg [7:0] $end
+$upscope $end
+$scope module PE01 $end
+$var wire 1 ! clk $end
+$var wire 8 ? input_in [7:0] $end
+$var wire 1 " load_weight $end
+$var wire 8 @ psum_in [7:0] $end
+$var wire 1 # reset $end
+$var wire 1 $ valid $end
+$var wire 8 A weight [7:0] $end
+$var parameter 32 B DATA_WIDTH $end
+$var reg 8 C input_out [7:0] $end
+$var reg 8 D psum_out [7:0] $end
+$var reg 8 E weight_reg [7:0] $end
+$upscope $end
+$scope module PE10 $end
+$var wire 1 ! clk $end
+$var wire 8 F input_in [7:0] $end
+$var wire 1 " load_weight $end
+$var wire 8 G psum_in [7:0] $end
+$var wire 1 # reset $end
+$var wire 1 $ valid $end
+$var wire 8 H weight [7:0] $end
+$var parameter 32 I DATA_WIDTH $end
+$var reg 8 J input_out [7:0] $end
+$var reg 8 K psum_out [7:0] $end
+$var reg 8 L weight_reg [7:0] $end
+$upscope $end
+$scope module PE11 $end
+$var wire 1 ! clk $end
+$var wire 8 M input_in [7:0] $end
+$var wire 1 " load_weight $end
+$var wire 8 N psum_in [7:0] $end
+$var wire 1 # reset $end
+$var wire 1 $ valid $end
+$var wire 8 O weight [7:0] $end
+$var parameter 32 P DATA_WIDTH $end
+$var reg 8 Q input_out [7:0] $end
+$var reg 8 R psum_out [7:0] $end
+$var reg 8 S weight_reg [7:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b1000 P
+b1000 I
+b1000 B
+b1000 ;
+b1000 4
+$end
+#0
+$dumpvars
+b0 S
+b0 R
+b0 Q
+b0 O
+b0 N
+b0 M
+b0 L
+b0 K
+b0 J
+b0 H
+b0 G
+b0 F
+b0 E
+b0 D
+b0 C
+b0 A
+b0 @
+b0 ?
+b0 >
+b0 =
+b0 <
+b0 :
+b0 9
+b0 8
+b0 7
+b0 6
+05
+b0 3
+b0 2
+b0 1
+b0 0
+b0 /
+b0 .
+b0 -
+b0 ,
+b0 +
+b0 *
+b0 )
+b0 (
+b0 '
+b0 &
+b0 %
+0$
+1#
+0"
+1!
+$end
+#5
+0!
+#10
+1!
+0#
+#15
+0!
+#20
+b1 >
+b10 E
+b11 L
+b100 S
+1!
+b100 (
+b100 O
+b11 '
+b11 H
+b10 &
+b10 A
+b1 %
+b1 :
+1"
+#25
+0!
+#30
+1!
+1$
+#35
+0!
+#40
+b101 3
+b101 <
+b101 ?
+b101 1
+b101 =
+b101 G
+1!
+b101 )
+b101 8
+#45
+0!
+#50
+b111 2
+b111 J
+b111 M
+b11010 /
+b11010 K
+b101 C
+b1010 0
+b1010 D
+b1010 N
+b110 3
+b110 <
+b110 ?
+b110 1
+b110 =
+b110 G
+1!
+b111 *
+b111 F
+b110 )
+b110 8
+#55
+0!
+#60
+b0 3
+b0 <
+b0 ?
+b0 1
+b0 =
+b0 G
+b110 C
+b1100 0
+b1100 D
+b1100 N
+b1000 2
+b1000 J
+b1000 M
+b11110 /
+b11110 K
+b111 Q
+b100110 .
+b100110 R
+b11010 +
+b11010 6
+1!
+b1000 *
+b1000 F
+b0 )
+b0 8
+#65
+0!
+#70
+b100110 ,
+b100110 7
+b11110 +
+b11110 6
+b1000 Q
+b101100 .
+b101100 R
+b0 2
+b0 J
+b0 M
+b0 /
+b0 K
+b0 C
+b0 0
+b0 D
+b0 N
+1!
+b0 *
+b0 F
+#75
+0!
+#80
+b0 Q
+b0 .
+b0 R
+b101100 ,
+b101100 7
+b0 +
+b0 6
+1!
+15
+#85
+0!
+#91
