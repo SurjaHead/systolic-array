@@ -14,7 +14,7 @@ module systolic_array #(parameter DATA_WIDTH=8)
     output wire [DATA_WIDTH-1:0] y1,
     output reg done
 );
-    // Internal wires for PE outputs
+    // internal wires for PE outputs
     wire [DATA_WIDTH-1:0] y0_internal;
     wire [DATA_WIDTH-1:0] y1_internal;
     wire [DATA_WIDTH-1:0] input_inter0;
@@ -70,10 +70,10 @@ module systolic_array #(parameter DATA_WIDTH=8)
         .weight(w11),
         .psum_in(psum_inter1),
         .input_out(),
-        .psum_out(y1_internal)  // Connect to internal wire
+        .psum_out(y1_internal)  // connect to internal wire
     );
 
-    // Registers for delaying outputs
+    // registers for delaying outputs
     reg [DATA_WIDTH-1:0] y0_reg;
     reg [DATA_WIDTH-1:0] y1_reg;
 
@@ -87,7 +87,7 @@ module systolic_array #(parameter DATA_WIDTH=8)
         end
     end
 
-    // Assign delayed outputs
+    // assign delayed outputs
     assign y0 = y0_reg;
     assign y1 = y1_reg;
 
